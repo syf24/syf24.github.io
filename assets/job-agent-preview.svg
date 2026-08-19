@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#edf3f8"/>
+  <rect x="48" y="42" width="1104" height="160" rx="18" fill="#fff" stroke="#dbe4ee"/>
+  <text x="78" y="92" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#6b7280" letter-spacing="7">CAREER COMMAND</text>
+  <text x="78" y="155" font-family="Arial, sans-serif" font-size="60" font-weight="800" fill="#111827">求职备考行动台</text>
+  <text x="78" y="190" font-family="Arial, sans-serif" font-size="24" fill="#667085">今日待办 · 投递进度 · 面试简历</text>
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <rect x="612" y="78" width="76" height="56" rx="10" fill="#111827"/>
+    <text x="628" y="115" fill="#fff">待办</text>
+    <rect x="704" y="78" width="126" height="56" rx="10" fill="#fff" stroke="#dbe4ee"/>
+    <text x="728" y="115" fill="#111827">投递清单</text>
+    <rect x="846" y="78" width="108" height="56" rx="10" fill="#fff" stroke="#dbe4ee"/>
+    <text x="875" y="115" fill="#111827">AI 日报</text>
+    <rect x="970" y="78" width="108" height="56" rx="10" fill="#fff" stroke="#dbe4ee"/>
+    <text x="993" y="115" fill="#111827">面试助手</text>
+  </g>
+  <rect x="48" y="232" width="1104" height="360" rx="18" fill="#fff" stroke="#dbe4ee"/>
+  <text x="78" y="284" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#6b7280" letter-spacing="6">URGENT EXAM</text>
+  <text x="78" y="334" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#111827">5.23 软考系统架构设计师</text>
+  <text x="78" y="382" font-family="Arial, sans-serif" font-size="24" fill="#667085">先把极重要事项拆成每天能完成的小块：论文、案例、综合知识三条线同时推进。</text>
+  <rect x="986" y="260" width="110" height="110" rx="14" fill="#f2efff" stroke="#d5c7ff"/>
+  <text x="1021" y="300" font-family="Arial, sans-serif" font-size="20" fill="#7c3aed">距考试</text>
+  <text x="1018" y="350" font-family="Arial, sans-serif" font-size="54" font-weight="800" fill="#7c3aed">10</text>
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <rect x="78" y="420" width="330" height="82" rx="10" fill="#fff" stroke="#7c3aed"/>
+    <text x="98" y="468" fill="#111827">软考综合知识：架构风格</text>
+    <rect x="430" y="420" width="330" height="82" rx="10" fill="#fff" stroke="#7c3aed"/>
+    <text x="450" y="468" fill="#111827">软考案例分析：系统架构题</text>
+    <rect x="782" y="420" width="330" height="82" rx="10" fill="#fff" stroke="#ea580c"/>
+    <text x="802" y="468" fill="#111827">大厂产品：产品案例拆解</text>
+  </g>
+  <rect x="48" y="628" width="1104" height="220" rx="18" fill="#fff" stroke="#dbe4ee"/>
+  <text x="78" y="684" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#6b7280" letter-spacing="6">DAILY SIGNAL</text>
+  <text x="78" y="732" font-family="Arial, sans-serif" font-size="38" font-weight="800" fill="#111827">天气穿搭与今日节奏</text>
+  <rect x="78" y="760" width="390" height="64" rx="12" fill="#f8fafc" stroke="#dbe4ee"/>
+  <text x="102" y="803" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#111827">33.4°C</text>
+  <rect x="490" y="760" width="610" height="64" rx="12" fill="#ecfdf5" stroke="#bbf7d0"/>
+  <text x="516" y="801" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#064e3b">穿搭建议：短袖或薄衬衫 · 轻薄长裤/半裙 · 透气鞋</text>
+</svg>

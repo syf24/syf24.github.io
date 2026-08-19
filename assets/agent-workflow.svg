@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f4f9a"/>
+    </marker>
+    <style>
+      .title{font:800 32px Arial,"Microsoft YaHei",sans-serif;fill:#0b2a61}
+      .node{fill:#f8fbff;stroke:#7eb0ee;stroke-width:2}
+      .decision{fill:#fff7ed;stroke:#f59e0b;stroke-width:2}
+      .end{fill:#ecfdf5;stroke:#22c55e;stroke-width:2}
+      .check{fill:#f5f3ff;stroke:#8b5cf6;stroke-width:2}
+      .txt{font:700 20px Arial,"Microsoft YaHei",sans-serif;fill:#10213d}
+      .sub{font:500 16px Arial,"Microsoft YaHei",sans-serif;fill:#475569}
+      .line{stroke:#1f4f9a;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#7c3aed;stroke-width:2.5;fill:none;stroke-dasharray:8 7;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1400" height="900" fill="#ffffff"/>
+  <text x="46" y="62" class="title">LangGraph 总体流程</text>
+  <line x1="46" y1="86" x2="1354" y2="86" stroke="#1f6fd1" stroke-width="4"/>
+
+  <rect x="510" y="120" width="380" height="76" rx="14" class="node"/>
+  <text x="700" y="153" text-anchor="middle" class="txt">START</text>
+  <text x="700" y="177" text-anchor="middle" class="sub">触发每日规划 / 简历优化 / 邮件确认</text>
+
+  <rect x="470" y="238" width="460" height="92" rx="14" class="node"/>
+  <text x="700" y="272" text-anchor="middle" class="txt">加载用户上下文</text>
+  <text x="700" y="300" text-anchor="middle" class="sub">data.json + memory.json + 今日日期</text>
+
+  <path d="M700 196 V238" class="line"/>
+
+  <path d="M700 374 L810 440 L700 506 L590 440 Z" class="decision"/>
+  <text x="700" y="432" text-anchor="middle" class="txt">选择工作流</text>
+  <text x="700" y="460" text-anchor="middle" class="sub">route by task type</text>
+  <path d="M700 330 V374" class="line"/>
+
+  <rect x="70" y="570" width="280" height="92" rx="14" class="node"/>
+  <text x="210" y="604" text-anchor="middle" class="txt">Daily Companion</text>
+  <text x="210" y="632" text-anchor="middle" class="sub">任务 / 投递 / 天气节奏</text>
+
+  <rect x="400" y="570" width="280" height="92" rx="14" class="node"/>
+  <text x="540" y="604" text-anchor="middle" class="txt">Resume PDF Graph</text>
+  <text x="540" y="632" text-anchor="middle" class="sub">JD 解析 / 经历匹配 / 简历生成</text>
+
+  <rect x="730" y="570" width="280" height="92" rx="14" class="node"/>
+  <text x="870" y="604" text-anchor="middle" class="txt">HIL Approval Graph</text>
+  <text x="870" y="632" text-anchor="middle" class="sub">邮件候选确认 / interrupt</text>
+
+  <rect x="1060" y="570" width="280" height="92" rx="14" class="node"/>
+  <text x="1200" y="604" text-anchor="middle" class="txt">Interview Prep</text>
+  <text x="1200" y="632" text-anchor="middle" class="sub">面试信息 / 准备清单</text>
+
+  <path d="M590 440 C420 456 270 500 210 570" class="line"/>
+  <path d="M650 490 C610 518 570 540 540 570" class="line"/>
+  <path d="M750 490 C790 518 840 540 870 570" class="line"/>
+  <path d="M810 440 C980 456 1130 500 1200 570" class="line"/>
+
+  <rect x="70" y="710" width="280" height="92" rx="14" class="end"/>
+  <text x="210" y="744" text-anchor="middle" class="txt">生成今日计划</text>
+  <text x="210" y="772" text-anchor="middle" class="sub">学习 / 投递 / 面试准备</text>
+
+  <rect x="400" y="710" width="280" height="92" rx="14" class="end"/>
+  <text x="540" y="744" text-anchor="middle" class="txt">生成定制简历</text>
+  <text x="540" y="772" text-anchor="middle" class="sub">改写内容 / 亮点 / 关键词</text>
+
+  <rect x="730" y="710" width="280" height="92" rx="14" class="end"/>
+  <text x="870" y="744" text-anchor="middle" class="txt">人工确认后写入</text>
+  <text x="870" y="772" text-anchor="middle" class="sub">application + task</text>
+
+  <rect x="1060" y="710" width="280" height="92" rx="14" class="end"/>
+  <text x="1200" y="744" text-anchor="middle" class="txt">生成面试准备</text>
+  <text x="1200" y="772" text-anchor="middle" class="sub">自我介绍 / 项目问题 / 反问</text>
+
+  <path d="M210 662 V710" class="line"/>
+  <path d="M540 662 V710" class="line"/>
+  <path d="M870 662 V710" class="line"/>
+  <path d="M1200 662 V710" class="line"/>
+
+  <rect x="525" y="820" width="350" height="52" rx="14" class="check"/>
+  <text x="700" y="853" text-anchor="middle" class="txt">PostgresSaver checkpoint</text>
+  <path d="M210 710 C280 820 440 846 525 846" class="dash"/>
+  <path d="M540 802 C590 824 630 840 665 846" class="dash"/>
+  <path d="M870 710 C840 800 800 832 875 846" class="dash"/>
+</svg>
