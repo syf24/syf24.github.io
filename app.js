@@ -557,18 +557,54 @@ function createGoalCard(goals, labelText = "项目目标") {
   return card;
 }
 
-const contactMenu = document.querySelector(".contact-menu");
-document.addEventListener("click", (event) => {
-  if (contactMenu?.open && !contactMenu.contains(event.target)) {
-    contactMenu.removeAttribute("open");
+const contactTrigger = document.querySelector(".contact-trigger");
+const contactDialog = document.querySelector(".contact-dialog");
+const contactClose = document.querySelector(".contact-close");
+
+function openContactDialog() {
+  if (!contactDialog) return;
+  if (typeof contactDialog.showModal === "function") {
+    contactDialog.showModal();
+  } else {
+    contactDialog.setAttribute("open", "");
   }
+  contactTrigger?.setAttribute("aria-expanded", "true");
+  document.body.classList.add("contact-dialog-open");
+  contactClose?.focus();
+}
+
+function closeContactDialog() {
+  if (!contactDialog?.open) return;
+  if (typeof contactDialog.close === "function") {
+    contactDialog.close();
+  } else {
+    contactDialog.removeAttribute("open");
+  }
+}
+
+contactTrigger?.addEventListener("click", openContactDialog);
+contactClose?.addEventListener("click", closeContactDialog);
+
+contactDialog?.addEventListener("click", (event) => {
+  if (event.target === contactDialog) closeContactDialog();
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && contactMenu?.open) {
-    contactMenu.removeAttribute("open");
-    contactMenu.querySelector("summary")?.focus();
+  if (event.key === "Escape" && contactDialog?.open) {
+    event.preventDefault();
+    closeContactDialog();
   }
+});
+
+contactDialog?.addEventListener("close", () => {
+  contactTrigger?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("contact-dialog-open");
+  contactTrigger?.focus();
+});
+
+contactDialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeContactDialog();
 });
 
 const sectionLinks = [...document.querySelectorAll('.topbar nav a[href^="#"]')];

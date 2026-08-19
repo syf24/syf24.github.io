@@ -25,17 +25,27 @@
           <a href="#projects" data-project-link="rag"><time>2026.02</time><span>汽车知识库 RAG</span></a>
           <a href="#projects" data-project-link="wheelchair"><time>2024.09</time><span>脑控轮椅</span></a>
         </div>
-        <details class="contact-menu">
-          <summary class="nav-cta"><span aria-hidden="true">03</span> 联系我</summary>
-          <div class="contact-popover">
-            <img src="assets/wechat-qr.jpg" alt="宋依凡的微信二维码" />
-            <strong>微信联系</strong>
-            <span>扫码添加好友</span>
-          </div>
-        </details>
+        <button class="nav-cta contact-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-dialog" aria-expanded="false">
+          <span aria-hidden="true">03</span> 联系我
+        </button>
       </nav>
       <p class="sidebar-note">2027 届硕士 · 北京</p>
     </header>
+
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+      <section class="contact-card">
+        <button class="contact-close" type="button" aria-label="关闭联系窗口">
+          <span aria-hidden="true">×</span>
+        </button>
+        <p class="contact-kicker">GET IN TOUCH</p>
+        <h2 id="contact-dialog-title">微信联系</h2>
+        <p class="contact-intro">扫描下方二维码添加好友</p>
+        <div class="contact-qr-frame">
+          <img src="assets/wechat-qr.jpg" alt="宋依凡的微信二维码" />
+        </div>
+        <p class="contact-hint">点击右上角、弹窗外区域，或按 Esc 即可关闭</p>
+      </section>
+    </dialog>
 
     <main>
       <section class="hero" id="hero">
