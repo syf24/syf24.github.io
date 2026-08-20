@@ -11,13 +11,14 @@
 <body>
   <canvas id="canvas" width="960" height="600" tabindex="-1"></canvas>
   <div class="loading" id="loading"><div class="loadbox"><div class="label">UNITY WEBGL · ROBOT TERMINAL</div><div class="track"><div class="bar" id="bar"></div></div></div></div>
-  <script src="./unity/Build/WebGLBuildDashboard.loader.js?v=stim5"></script>
+  <script src="./unity/Build/robot-webgl-build.loader.js?v=perf6"></script>
   <script>
-    let instance=null, pending=null;
-    const config={dataUrl:'./unity/Build/WebGLBuildDashboard.data?v=stim5',frameworkUrl:'./unity/Build/WebGLBuildDashboard.framework.js?v=stim5',codeUrl:'./unity/Build/WebGLBuildDashboard.wasm?v=stim5',streamingAssetsUrl:'./unity/StreamingAssets',companyName:'DefaultCompany',productName:'UR16E大模型抓取实验',productVersion:'1.4',showBanner:(m,t)=>console[t==='error'?'error':'warn'](m)};
-    createUnityInstance(document.querySelector('#canvas'),config,p=>document.querySelector('#bar').style.width=(p*100)+'%').then(i=>{instance=i;document.querySelector('#loading').remove();parent.postMessage({type:'unity-ready',view:'robot'},'*');if(pending)selectTarget(...pending)}).catch(e=>{document.querySelector('#loading').innerHTML='<div class="error">Unity加载失败：'+e+'</div>'});
+    let instance=null, pending=null, pauseRequested=false;
+    const config={dataUrl:'./unity/Build/robot-webgl-build.data?v=perf6',frameworkUrl:'./unity/Build/robot-webgl-build.framework.js?v=perf6',codeUrl:'./unity/Build/robot-webgl-build.wasm?v=perf6',streamingAssetsUrl:'./unity/StreamingAssets',companyName:'DefaultCompany',productName:'UR16E大模型抓取实验',productVersion:'1.8',devicePixelRatio:.75,showBanner:(m,t)=>console[t==='error'?'error':'warn'](m)};
+    createUnityInstance(document.querySelector('#canvas'),config,p=>document.querySelector('#bar').style.width=(p*100)+'%').then(i=>{instance=i;document.querySelector('#loading').remove();setUnityPaused(pauseRequested);parent.postMessage({type:'unity-ready',view:'robot'},'*');if(pending)selectTarget(...pending)}).catch(e=>{document.querySelector('#loading').innerHTML='<div class="error">Unity加载失败：'+e+'</div>'});
     function selectTarget(cls,conf){if(!instance){pending=[cls,conf];return}pending=null;instance.SendMessage('RobotWebBridge','SelectTarget',`${cls},${conf}`)}
     function presentStimulus(cls){if(!instance)return;instance.SendMessage('RobotWebBridge','PresentStimulus',`${cls}`)}
+    function setUnityPaused(paused){pauseRequested=!!paused;if(!instance?.Module)return;const fn=pauseRequested?'pauseMainLoop':'resumeMainLoop';if(typeof instance.Module[fn]==='function')instance.Module[fn]()}
   </script>
 </body>
 </html>
