@@ -17,6 +17,31 @@
   <a class="credits" href="./media/animations-v1/credits.html" target="_blank" rel="noopener">动画素材 · 来源与授权</a>
   <script src="./video-unity/Build/WebGLBuildDashboard.loader.js"></script>
   <script>
+    // Keep scrolling the surrounding page while the pointer is over Unity.
+    if (window.parent !== window) {
+      document.addEventListener('wheel', event => {
+        if (event.ctrlKey || event.metaKey) return;
+        const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.parent.scrollBy({left:event.deltaX * unit, top:event.deltaY * unit, behavior:'instant'});
+      }, {capture:true, passive:false});
+      let touchY = null;
+      document.addEventListener('touchstart', event => {
+        touchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+      }, {capture:true, passive:true});
+      document.addEventListener('touchmove', event => {
+        if (touchY === null || event.touches.length !== 1) return;
+        const y = event.touches[0].clientY;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.parent.scrollBy({top:touchY - y, behavior:'instant'});
+        touchY = y;
+      }, {capture:true, passive:false});
+      for (const name of ['touchend', 'touchcancel']) {
+        document.addEventListener(name, () => {touchY = null;}, {passive:true});
+      }
+    }
     let instance=null, pending=null, started=false;
     const config={dataUrl:'./video-unity/Build/WebGLBuildDashboard.data?v=background1',frameworkUrl:'./video-unity/Build/WebGLBuildDashboard.framework.js?v=background1',codeUrl:'./video-unity/Build/WebGLBuildDashboard.wasm?v=background1',streamingAssetsUrl:'./media/animations-v1',companyName:'DefaultCompany',productName:'BCI Video Player',productVersion:'1.0',showBanner:(m,t)=>console[t==='error'?'error':'warn'](m)};
     createUnityInstance(document.querySelector('#canvas'),config,p=>document.querySelector('#bar').style.width=(p*100)+'%').then(i=>{instance=i;document.querySelector('#loading').remove();document.querySelector('#start').hidden=false;parent.postMessage({type:'unity-ready',view:'video'},'*');}).catch(e=>{document.querySelector('#loading').innerHTML='<div class="error">Unity加载失败：'+e+'</div>'});
